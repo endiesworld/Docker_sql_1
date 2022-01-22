@@ -6,6 +6,6 @@ RUN pip install matplotlib
 
 WORKDIR /path
 
-COPY pippeline.py pippeline.py
+COPY pipeline.py pipeline.py
 
 ENTRYPOINT ["python", "pippeline.py"]
