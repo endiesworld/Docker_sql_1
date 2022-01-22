@@ -4,8 +4,8 @@ RUN pip install pandas
 
 RUN pip install matplotlib
 
-WORKDIR /path
+WORKDIR /app
 
 COPY pipeline.py pipeline.py
 
-ENTRYPOINT ["python", "pippeline.py"]
+ENTRYPOINT ["python", "pipeline.py"]
