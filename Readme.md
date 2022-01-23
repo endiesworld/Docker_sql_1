@@ -31,3 +31,5 @@ $ sudo lsof -i :5432
 """
 pgcli -h localhost -p 5432 -U root -d ny_taxi
 """
+
+## Use "Control +C" to escape, the you can start running queries
