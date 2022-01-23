@@ -33,3 +33,23 @@ pgcli -h localhost -p 5432 -U root -d ny_taxi
 """
 
 ## Use "Control +C" to escape, the you can start running queries
+
+## Download the dataset from
+
+"""
+https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page#:~:text=January-,Yellow%20Taxi%20Trip%20Records,-(CSV)
+
+"""
+
+## Download the dataset dictionary
+
+"""
+https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page#:~:text=Yellow%20Trips%20Data%20Dictionary
+
+"""
+
+## Download the taxi_zone look up table
+
+"""
+https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page#:~:text=Taxi%20Zone%20Lookup%20Table
+"""
