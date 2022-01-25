@@ -112,3 +112,54 @@ Running on Google Colab:
 no dependencies required
 Next, we need a SQLite database file (i.e. with a .db file extension) to connect to. For this purpose, the chinook.db file has been provided, download it from Athena and place it in the same folder as this notebook or some other known location.
 After installing the dependencies and downloading the database file, we can now connect to our DB.
+
+## Install Pgadmin docker image, to enable you conviniently interract with the database.
+
+"""
+docker run -it \
+ -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+ -e PGADMIN_DEFAULT_PASSWORD="root" \
+ -p 8080:80 \
+ dpage/pgadmin4
+"""
+
+## Create a network between the postgres container and the PgAdmin container in docker
+
+"""
+docker network create <your_network_name>
+"""
+
+## Stop the containers for postgres and PgAdmin, and restart them by inputing the network created above into their respective run command while restarting the containers again.
+
+"""
+docker run -it \
+ -e POSTGRES_USER="root" \
+ -e POSTGRES_PASSWORD="password" \
+ -e POSTGRES_DB="ny_taxi" \
+ -v $(pwd)/ny_taxi_postgres_data:/var/lib/postgresql/data \
+ -p 5432:5432 \
+ --network=pg-network \
+ --name pg-database \
+ postgres:13
+"""
+
+# The --name argument is what other continers will use in connecting to the postgres database
+
+"""
+docker run -it \
+ -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+ -e PGADMIN_DEFAULT_PASSWORD="root" \
+ -p 8080:80 \
+ --network=pg-network \
+ --name pgadmin \
+ dpage/pgadmin4
+"""
+
+## In any case you are faced with either of these errors: "Error response from daemon: network with name pg-network already exists" OR "Error response from daemon: Conflict. The container name "/pg-database" is already in use by container "441fae5ff3f65259a0b889985f68399cc3833188b2076edee96814559c446c55". You have to remove (or rename) that container to be able to reuse that name."
+
+# run the below to continue
+
+"""
+$ docker container rm <your_container_name> to remove the conainer
+$ docker network rm <your_network_name> to remove the network
+"""
