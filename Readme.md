@@ -163,3 +163,9 @@ docker run -it \
 $ docker container rm <your_container_name> to remove the conainer
 $ docker network rm <your_network_name> to remove the network
 """
+
+## Convert jupyter notebook to a script
+
+"""
+jupyter nbconvert --to=script update_data.ipynb
+"""
